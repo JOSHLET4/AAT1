@@ -1,21 +1,16 @@
-//cargo en un arreglo las imganes de las banderas. Este sera el orden que se mostrarán
-let banderas = ["1 (1).png", "2 (1).png", "3 (1).png", "4 (1).png", "5 (1).png"];
+let preguntas = ["1 (1).png", "2 (1).png", "3 (1).png", "4 (1).png", "5 (1).png"];
 
-//arreglo que guardara la opcion correcta
 let correcta = [2,2,1,1,0];
 
-//arreglo que guardara los paises a mostrar en cada jugada
 let opciones = [];
-//cargo en el arreglo opciones las opciones a mostrar en cada jugada
 opciones.push(["De modo", "De negación", "De tiempo"]);
 opciones.push(["Zagreb", "Bratislava", "Copenhague"]);
 opciones.push(["Julio César", "Augusto", "Nerón"]);
 opciones.push(["Marte", "Sol", "Saturno"]);
 opciones.push(["Fémur", "Tibia", "Húmero"]);
 
-//variable que guarda la posicion actual
 let posActual = 0;
-//variable que guarda la cantidad acertadas hasta el moemento
+//variable que guarda la cantidad acertadas hasta el momento
 let cantidadAcertadas = 0;
 
 function comenzarJuego(){
@@ -31,15 +26,15 @@ function comenzarJuego(){
 
 //funcion que carga la siguiente bandera y sus opciones
 function cargarBandera(){
-    //controlo sis se acabaron las banderas
-    if(banderas.length <= posActual){
+    //controlo sis se acabaron las preguntas
+    if(preguntas.length <= posActual){
         terminarJuego();
     }
     else{//cargo las opciones
         //limpiamos las clases que se asignaron
         limpiarOpciones();
 
-        document.getElementById("imgPreguntas").src = "img/" + banderas[posActual];
+        document.getElementById("imgPreguntas").src = "img/" + preguntas[posActual];
         document.getElementById("n0").innerHTML = opciones[posActual][0];
         document.getElementById("n1").innerHTML = opciones[posActual][1];
         document.getElementById("n2").innerHTML = opciones[posActual][2];
@@ -81,7 +76,7 @@ function terminarJuego(){
     document.getElementById("pantalla-final").style.display = "block";
     //agreamos los resultados
     document.getElementById("numCorrectas").innerHTML = cantidadAcertadas;
-    document.getElementById("numIncorrectas").innerHTML = banderas.length - cantidadAcertadas;
+    document.getElementById("numIncorrectas").innerHTML = preguntas.length - cantidadAcertadas;
 }
 
 function volverAlInicio(){
@@ -90,3 +85,8 @@ function volverAlInicio(){
     document.getElementById("inicio").style.display = "block";
     document.getElementById("pantalla-juego").style.display = "none";
 }
+
+window.onload = function() {
+    // Ocultar la pantalla final al cargar la página
+    document.getElementById("pantalla-final").style.display = "none";
+};
