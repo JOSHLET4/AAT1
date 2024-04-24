@@ -1,6 +1,6 @@
 let preguntas = ["1 (1).png", "2 (1).png", "3 (1).png", "4 (1).png", "5 (1).png"];
 
-let correcta = [2,2,1,1,0];
+let correcta = [2, 2, 1, 1, 0];
 
 let opciones = [];
 opciones.push(["De modo", "De negación", "De tiempo"]);
@@ -10,10 +10,9 @@ opciones.push(["Marte", "Sol", "Saturno"]);
 opciones.push(["Fémur", "Tibia", "Húmero"]);
 
 let posActual = 0;
-//variable que guarda la cantidad acertadas hasta el momento
 let cantidadAcertadas = 0;
 
-function comenzarJuego(){
+function comenzarJuego() {
     //reseteamos las variables
     posActual = 0;
     cantidadAcertadas = 0;
@@ -24,13 +23,12 @@ function comenzarJuego(){
 
 }
 
-//funcion que carga la siguiente bandera y sus opciones
-function cargarBandera(){
-    //controlo sis se acabaron las preguntas
-    if(preguntas.length <= posActual){
+function cargarBandera() {
+    //controlo si se acabaron las preguntas
+    if (preguntas.length <= posActual) {
         terminarJuego();
     }
-    else{//cargo las opciones
+    else {//cargo las opciones
         //limpiamos las clases que se asignaron
         limpiarOpciones();
 
@@ -41,7 +39,7 @@ function cargarBandera(){
     }
 }
 
-function limpiarOpciones(){
+function limpiarOpciones() {
     document.getElementById("n0").className = "nombre";
     document.getElementById("n1").className = "nombre";
     document.getElementById("n2").className = "nombre";
@@ -51,13 +49,13 @@ function limpiarOpciones(){
     document.getElementById("l2").className = "letra";
 }
 
-function comprobarRespuesta(opElegida){
-    if(opElegida==correcta[posActual]){//acertó
+function comprobarRespuesta(opElegida) {
+    if (opElegida == correcta[posActual]) {//acertó
         //agregamos las clases para colocar el color verde a la opcion elegida
         document.getElementById("n" + opElegida).className = "nombre nombreAcertada";
         document.getElementById("l" + opElegida).className = "letra letraAcertada";
         cantidadAcertadas++;
-    }else{//no acerto
+    } else {//no acerto
         //agramos las clases para colocar en rojo la opcion elegida
         document.getElementById("n" + opElegida).className = "nombre nombreNoAcertada";
         document.getElementById("l" + opElegida).className = "letra letraNoAcertada";
@@ -68,9 +66,9 @@ function comprobarRespuesta(opElegida){
     }
     posActual++;
     //Esperamos 1 segundo y pasamos mostrar la siguiente bandera y sus opciones
-    setTimeout(cargarBandera,1000);
+    setTimeout(cargarBandera, 1000);
 }
-function terminarJuego(){
+function terminarJuego() {
     //ocultamos las pantallas y mostramos la pantalla final
     document.getElementById("pantalla-juego").style.display = "none";
     document.getElementById("pantalla-final").style.display = "block";
@@ -79,14 +77,30 @@ function terminarJuego(){
     document.getElementById("numIncorrectas").innerHTML = preguntas.length - cantidadAcertadas;
 }
 
-function volverAlInicio(){
+function volverAlInicio() {
     //ocultamos las pantallas y activamos la inicial
     document.getElementById("pantalla-final").style.display = "none";
     document.getElementById("inicio").style.display = "block";
     document.getElementById("pantalla-juego").style.display = "none";
 }
 
-window.onload = function() {
+window.onload = function () {
     // Ocultar la pantalla final al cargar la página
     document.getElementById("pantalla-final").style.display = "none";
 };
+
+let tl = gsap.timeline ({
+    repeat: 0,
+});
+
+tl.to('.btn', {
+    duration: 1,
+    scale: 2,
+    x: 500,
+});
+
+tl.to('.btn', {
+    duration: 1,
+    scale: 1,
+    x: 10,
+});
