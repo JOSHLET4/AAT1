@@ -65,7 +65,7 @@ function comprobarRespuesta(opElegida) {
         document.getElementById("l" + correcta[posActual]).className = "letra letraAcertada";
     }
     posActual++;
-    //Esperamos 1 segundo y pasamos mostrar la siguiente bandera y sus opciones
+    //Esperamos 1 segundo y pasamos mostrar la pregunta y sus opciones
     setTimeout(cargarImgpreg, 1000);
 }
 function terminarJuego() {
