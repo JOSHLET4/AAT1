@@ -19,11 +19,11 @@ function comenzarJuego() {
     //activamos las pantallas necesarias
     document.getElementById("inicio").style.display = "none";
     document.getElementById("pantalla-juego").style.display = "block";
-    cargarBandera();
+    cargarImgpreg();
 
 }
 
-function cargarBandera() {
+function cargarImgpreg() {
     //controlo si se acabaron las preguntas
     if (preguntas.length <= posActual) {
         terminarJuego();
@@ -51,7 +51,7 @@ function limpiarOpciones() {
 
 function comprobarRespuesta(opElegida) {
     if (opElegida == correcta[posActual]) {//acertó
-        //agregamos las clases para colocar el color verde a la opcion elegida
+        //color verde
         document.getElementById("n" + opElegida).className = "nombre nombreAcertada";
         document.getElementById("l" + opElegida).className = "letra letraAcertada";
         cantidadAcertadas++;
@@ -66,7 +66,7 @@ function comprobarRespuesta(opElegida) {
     }
     posActual++;
     //Esperamos 1 segundo y pasamos mostrar la siguiente bandera y sus opciones
-    setTimeout(cargarBandera, 1000);
+    setTimeout(cargarImgpreg, 1000);
 }
 function terminarJuego() {
     //ocultamos las pantallas y mostramos la pantalla final
